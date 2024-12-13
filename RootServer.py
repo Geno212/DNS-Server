@@ -1,78 +1,71 @@
-import socket
-import struct
+import socket, time
+from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log, forward_query
 
-class RootServer:
-    def __init__(self, ip="127.0.0.1", port=53):
-        self.ip = ip
-        self.port = port
-        self.tld_servers = {
-            ".com": ("127.0.0.1", 1053),
-            ".org": ("127.0.0.1", 2053),
-        }
+ROOT_DATABASE = {
+    "com": {"type":"NS","ttl":300,"value":"ns.com.tld."},
+    "org": {"type":"NS","ttl":300,"value":"ns.org.tld."}
+}
 
-    def start(self):
-        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as server_socket:
-            server_socket.bind((self.ip, self.port))
-            print(f"Root DNS Server running on {self.ip}:{self.port}...")
+TLD_SERVER = ("127.0.0.1", 5301)
 
-            while True:
-                data, addr = server_socket.recvfrom(512)
-                print(f"Received query from {addr}")
+CACHE = {}  # {(domain, qtype_str): (records, expiration_time)}
 
-                # Decode DNS header
-                header = self.decode_header(data)
-                qname, qtype = self.decode_question(data[12:])
+def get_from_cache(domain, qtype):
+    qtype_str = RECORD_TYPES.get(qtype, None)
+    if qtype_str is None:
+        return None
+    now = time.time()
+    key = (domain, qtype_str)
+    if key in CACHE:
+        records, exp = CACHE[key]
+        if now < exp:
+            log(f"Returning cached result for {domain}, type={qtype_str}")
+            return records
+        else:
+            del CACHE[key]
+    return None
 
-                # Print extracted details
-                print(f"QName: {qname}, QType: {qtype}")
+def put_in_cache(domain, qtype, records):
+    qtype_str = RECORD_TYPES.get(qtype, None)
+    if qtype_str and records:
+        ttl = records[0].get("ttl", 300)
+        expiration = time.time() + ttl
+        CACHE[(domain, qtype_str)] = (records, expiration)
 
-                # Forward to appropriate TLD server
-                tld = self.extract_tld(qname)
-                if tld in self.tld_servers:
-                    tld_ip, tld_port = self.tld_servers[tld]
-                    print(f"Forwarding query to TLD server {tld} at {tld_ip}:{tld_port}")
-                    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as tld_socket:
-                        tld_socket.sendto(data, (tld_ip, tld_port))
-                        response, _ = tld_socket.recvfrom(512)
+def find_record(domain, qtype):
+    # Check if in cache
+    cached = get_from_cache(domain, qtype)
+    if cached:
+        return cached
 
-                    # Send back the response to the client
-                    server_socket.sendto(response, addr)
+    parts = domain.split(".")
+    if len(parts) < 2:
+        return None
+    tld = parts[-1]
+    if tld in ROOT_DATABASE:
+        # Forward query to TLD
+        records = forward_query(domain, qtype, TLD_SERVER)
+        if records:
+            put_in_cache(domain, qtype, records)
+        return records
+    return None
 
-    def decode_header(self, data):
-        # Extract and decode DNS header (first 12 bytes)
-        header = struct.unpack("!HHHHHH", data[:12])
-        return header
+def start_root_server(ip="127.0.0.1", port=53):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind((ip, port))
+    log(f"Root DNS server started on {ip}:{port}")
 
-    def decode_question(self, data):
-        # Decode the DNS question section
-        qname, qtype, qclass = self.decode_qname_and_type(data)
-        return qname, qtype
+    while True:
+        data, addr = sock.recvfrom(512)
+        transaction_id, domain, qtype = parse_query(data)
+        log(f"Root server query: {domain}, type: {RECORD_TYPES.get(qtype,'?')}")
 
-    def decode_qname_and_type(self, data):
-        # Decode QName first
-        qname, qname_length = self.decode_qname(data)
-
-        # After decoding the QName, extract QType (2 bytes) and QClass (2 bytes)
-        qtype, qclass = struct.unpack("!HH", data[qname_length:])
-        return qname, qtype, qclass
-
-    def decode_qname(self, data):
-        qname = []
-        i = 0
-        length = data[i]
-        while length != 0:
-            i += 1
-            qname.append(data[i:i + length].decode())
-            i += length
-            length = data[i]
-
-        # Return the decoded QName as a string
-        return ".".join(qname), i + 1  # i + 1 is the position after the null byte
-
-    def extract_tld(self, qname):
-        # Extract TLD from the domain name (assumes TLD is the last part)
-        return "." + qname.split('.')[-1]
+        records = find_record(domain, qtype)
+        if records:
+            response = build_response(transaction_id, domain, qtype, records)
+        else:
+            response = build_nxdomain(transaction_id, domain, qtype)
+        sock.sendto(response, addr)
 
 if __name__ == "__main__":
-    root_server = RootServer()
-    root_server.start()
+    start_root_server()
