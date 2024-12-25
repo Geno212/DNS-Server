@@ -32,7 +32,7 @@ def find_record(domain, qtype):
         return None
     return None
 
-def start_auth_server(ip="127.0.0.1", port=5302):
+def start_auth_server(ip="192.168.1.19", port=5302):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"Authoritative DNS server started on {ip}:{port}")

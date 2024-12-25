@@ -11,7 +11,7 @@ TLD_DATABASE = {
     }
 }
 
-AUTH_SERVER = ("127.0.0.1", 5302)
+AUTH_SERVER = ("192.168.1.19", 5302)
 
 # Cache structure: {(domain, qtype_str): (records, expiration_time)}
 CACHE = {}
@@ -65,7 +65,7 @@ def find_record(domain, qtype):
     return None
 
 
-def start_tld_server(ip="127.0.0.1", port=5301):
+def start_tld_server(ip="192.168.1.19", port=5301):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"TLD DNS server started on {ip}:{port}")

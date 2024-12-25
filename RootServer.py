@@ -6,7 +6,7 @@ ROOT_DATABASE = {
     "org": {"type":"NS","ttl":300,"value":"ns.org.tld."}
 }
 
-TLD_SERVER = ("127.0.0.1", 5301)
+TLD_SERVER = ("192.168.1.19", 5301)
 
 CACHE = {}  # {(domain, qtype_str): (records, expiration_time)}
 
@@ -50,7 +50,7 @@ def find_record(domain, qtype):
         return records
     return None
 
-def start_root_server(ip="127.0.0.1", port=53):
+def start_root_server(ip="192.168.1.19", port=53):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"Root DNS server started on {ip}:{port}")
