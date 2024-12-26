@@ -17,22 +17,31 @@ AUTH_DATABASE = {
         {"type":"A","ttl":300,"value":"91.198.174.192"},
         {"type":"AAAA","ttl":300,"value":"2620:0:862:ed1a::1"},
         {"type":"NS","ttl":300,"value":"ns1.wikimedia.org"}
+    ],
+    "2.10.20.172.in-addr.arpa": [
+        {"type": "PTR", "ttl": 300, "value": "auth-dns.local"}
     ]
 }
 
 def find_record(domain, qtype):
-    # Return records of requested type if available
     qtype_str = RECORD_TYPES.get(qtype, None)
+    log(f"Authoritative server handling domain '{domain}' with qtype {qtype}")
     if domain in AUTH_DATABASE:
+        log(f"Found {domain} in AUTH_DATABASE")
         if qtype_str:
             filtered = [r for r in AUTH_DATABASE[domain] if r["type"] == qtype_str]
             if filtered:
+                log(f"Found matching records: {filtered}")
                 return filtered
+            else:
+                log(f"No records of type {qtype_str} for domain {domain}")
         # If no direct match, maybe return something else or NXDOMAIN
         return None
+    else:
+        log(f"Domain {domain} not found in AUTH_DATABASE")
     return None
 
-def start_auth_server(ip="192.168.1.19", port=5302):
+def start_auth_server(ip="172.20.10.2", port=5302):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"Authoritative DNS server started on {ip}:{port}")
@@ -40,7 +49,8 @@ def start_auth_server(ip="192.168.1.19", port=5302):
     while True:
         data, addr = sock.recvfrom(512)
         transaction_id, domain, qtype = parse_query(data)
-        log(f"Auth server query: {domain}, type: {RECORD_TYPES.get(qtype,'?')}")
+        qtype_str = RECORD_TYPES.get(qtype,'?')
+        log(f"Auth server received query from {addr}: {domain}, type: {qtype_str}, transaction ID: {transaction_id}")
 
         records = find_record(domain, qtype)
         if records:
@@ -48,6 +58,7 @@ def start_auth_server(ip="192.168.1.19", port=5302):
         else:
             response = build_nxdomain(transaction_id, domain, qtype)
         sock.sendto(response, addr)
+        log(f"Auth server sent response to {addr} for transaction ID {transaction_id}")
 
 if __name__ == "__main__":
     start_auth_server()

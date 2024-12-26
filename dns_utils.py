@@ -1,6 +1,7 @@
 import socket
 import struct
 import datetime
+import random
 
 RECORD_TYPES = {
     1: "A",
@@ -10,16 +11,14 @@ RECORD_TYPES = {
     12: "PTR"
 }
 
-
 def log(message):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open("dns_server.log", "a") as f:
         f.write(f"{timestamp} - {message}\n")
     print(f"{timestamp} - {message}")
 
-
 def parse_query(data):
-    transaction_id = data[:2]
+    transaction_id = struct.unpack(">H", data[:2])[0]
     flags = data[2:4]
     qdcount = struct.unpack(">H", data[4:6])[0]
     qname_end = data.find(b"\x00", 12)
@@ -36,7 +35,6 @@ def parse_query(data):
     domain = ".".join(domain_parts)
     return transaction_id, domain, qtype
 
-
 def encode_domain_name(domain):
     encoded = b""
     for part in domain.strip('.').split('.'):
@@ -44,9 +42,8 @@ def encode_domain_name(domain):
     encoded += b"\x00"
     return encoded
 
-
 def build_response(transaction_id, domain, qtype, records):
-    response = transaction_id
+    response = struct.pack(">H", transaction_id)
     response += b"\x81\x80"  # flags: response, no error
     response += struct.pack(">HHHH", 1, len(records), 0, 0)  # QD=1, AN=records, NS=0, AR=0
 
@@ -60,6 +57,7 @@ def build_response(transaction_id, domain, qtype, records):
         for k, v in RECORD_TYPES.items():
             if v == r["type"]:
                 rt = k
+                break  # Added break to prevent unnecessary iterations
         response += struct.pack(">HHI", rt, 1, r.get("ttl", 300))
 
         if r["type"] == "A":
@@ -87,14 +85,13 @@ def build_response(transaction_id, domain, qtype, records):
             response += ptr_encoded
         else:
             # Unsupported type
-            pass
+            log(f"Unsupported record type: {r['type']}")
 
     return response
 
-
 def build_nxdomain(transaction_id, domain, qtype):
     # NXDOMAIN
-    response = transaction_id
+    response = struct.pack(">H", transaction_id)
     # 0x81 0x83 = standard query response, Name Error
     response += b"\x81\x83"
     # QD=1, AN=0, NS=0, AR=0
@@ -103,9 +100,11 @@ def build_nxdomain(transaction_id, domain, qtype):
     response += struct.pack(">HH", qtype, 1)
     return response
 
-
-def build_query(domain, qtype):
-    transaction_id = b"\xaa\xaa"
+def build_query(domain, qtype, transaction_id=None):
+    if transaction_id is None:
+        # Generate a random transaction_id
+        transaction_id = random.randint(0, 65535)
+    transaction_id_bytes = struct.pack(">H", transaction_id)
     flags = b"\x01\x00"
     qdcount = b"\x00\x01"
     ancount = b"\x00\x00"
@@ -114,13 +113,11 @@ def build_query(domain, qtype):
     qname = encode_domain_name(domain)
     qtype_b = struct.pack(">H", qtype)
     qclass_b = struct.pack(">H", 1)
-    query = transaction_id + flags + qdcount + ancount + nscount + arcount + qname + qtype_b + qclass_b
+    query = transaction_id_bytes + flags + qdcount + ancount + nscount + arcount + qname + qtype_b + qclass_b
     return query
 
-
 def parse_response(data):
-    # Minimal parser
-    transaction_id = data[:2]
+    transaction_id = struct.unpack(">H", data[:2])[0]
     flags = data[2:4]
     qdcount, ancount, nscount, arcount = struct.unpack(">HHHH", data[4:12])
 
@@ -158,9 +155,11 @@ def parse_response(data):
         elif rtype_str == "PTR":
             ptr = decode_domain_name(rdata)
             records.append({"type": "PTR", "ttl": ttl, "value": ptr})
+        else:
+            # Unsupported type
+            log(f"Received unsupported record type: {rtype}")
 
-    return records
-
+    return transaction_id, records
 
 def decode_domain_name(data):
     labels = []
@@ -172,15 +171,18 @@ def decode_domain_name(data):
         pos += length
     return ".".join(labels) + "."
 
-
-def forward_query(domain, qtype, server_addr):
+def forward_query(domain, qtype, server_addr, transaction_id):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.settimeout(2)
-    query = build_query(domain, qtype)
+    query = build_query(domain, qtype, transaction_id)
     sock.sendto(query, server_addr)
     try:
         data, _ = sock.recvfrom(512)
-        return parse_response(data)
+        resp_transaction_id, records = parse_response(data)
+        if resp_transaction_id != transaction_id:
+            log(f"Transaction ID mismatch: expected {transaction_id}, got {resp_transaction_id}")
+            return None
+        return records
     except socket.timeout:
         log(f"Timeout querying {server_addr}")
         return None
