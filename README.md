@@ -49,7 +49,7 @@ The servers use only standard Python libraries, so no external packages are requ
 Ensure you have Python 3.6 or higher installed.
 
 ## Configuration
-###!!!you have to connect both laptops client and server on the same wifi network
+### !!!you have to connect both laptops client and server on the same wifi network
 ### Finding Your Server IP Address
 
 Before configuring the servers, find your server device's IP address to be able to query from the client laptop:
