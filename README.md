@@ -41,18 +41,18 @@ The servers communicate over UDP sockets and use custom DNS utilities for parsin
 
 1. Clone the Repository
 Clone the repository using git and navigate to the project directory:
-git clone https://github.com/yourusername/custom-dns-server.git
-cd custom-dns-server
+git clone https://github.com/Geno212/DNS-Server/tree/master
+cd into the folder
 
 2. Install Required Packages
 The servers use only standard Python libraries, so no external packages are required.
 Ensure you have Python 3.6 or higher installed.
 
 ## Configuration
-
+###!!!you have to connect both laptops client and server on the same wifi network
 ### Finding Your Server IP Address
 
-Before configuring the servers, find your device's IP address:
+Before configuring the servers, find your server device's IP address to be able to query from the client laptop:
 
 Windows:
 1. Open Command Prompt (CMD)
