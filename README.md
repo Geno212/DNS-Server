@@ -28,7 +28,7 @@ The servers communicate over UDP sockets and use custom DNS utilities for parsin
 - Custom implementation of DNS query and response handling
 - Hierarchical server structure mimicking real DNS resolution
 - Caching mechanisms to improve performance
-- Support for common DNS record types: A, AAAA, MX, NS, PTR
+- Support for common DNS record types: A, AAAA, MX, NS, PTR, CNAME
 - Logging of all DNS queries and responses
 
 ## Prerequisites
@@ -41,31 +41,45 @@ The servers communicate over UDP sockets and use custom DNS utilities for parsin
 
 1. Clone the Repository
 Clone the repository using git and navigate to the project directory:
-git clone https://github.com/yourusername/custom-dns-server.git
-cd custom-dns-server
+git clone https://github.com/Geno212/DNS-Server/tree/master
+cd into the folder
 
 2. Install Required Packages
 The servers use only standard Python libraries, so no external packages are required.
 Ensure you have Python 3.6 or higher installed.
 
 ## Configuration
+### !!!you have to connect both laptops client and server on the same wifi network
+### Finding Your Server IP Address
+
+Before configuring the servers, find your server device's IP address to be able to query from the client laptop:
+
+Windows:
+1. Open Command Prompt (CMD)
+2. Type `ipconfig`
+3. Look for "IPv4 Address" under your active network adapter (Ethernet or Wi-Fi)
+
+Linux/Mac:
+1. Open Terminal
+2. Type `ifconfig` or `ip addr`
+3. Look for "inet" under eth0 or wlan0
 
 ### Server IP Addresses and Ports
 
-Adjust the IP addresses and ports in each server script according to your network setup:
+Use your device's IP address found above in the configuration:
 
 Root Server (root_server.py):
-Set TLD_SERVER to ("(server device ip address from ipconfig)", 5301)
+Set TLD_SERVER to ("your_ip_address", 5301)
 
 TLD Server (tld_server.py):
-Set AUTH_SERVER to ("(server device ip address from ipconfig)", 5302)
+Set AUTH_SERVER to ("your_ip_address", 5302)
 
 Authoritative Server (auth_server.py):
 Uses port 5302 by default
 
 ### DNS Records
 
-Customize the DNS records in each server's database as needed:
+Customize the DNS records in each server's database. Example configurations:
 
 Root Server Database includes entries for:
 - com domain
@@ -78,11 +92,19 @@ TLD Server Database includes entries for:
 - wikipedia.org
 
 Authoritative Server Database includes:
-- A records
-- AAAA records
-- MX records
-- NS records
-- PTR records
+- A records (IPv4 addresses)
+- AAAA records (IPv6 addresses)
+- MX records (mail servers)
+- NS records (name servers)
+- PTR records (reverse DNS)
+- CNAME records (canonical names)
+
+Example CNAME configurations in our project:
+- google.com -> CNAME to googlemail.l.google.com
+- facebook.com -> CNAME to star.c10r.facebook.com
+- wikipedia.org -> CNAME to dyna.wikimedia.org
+
+Note: Root domains (like google.com, facebook.com, wikipedia.org) use A/AAAA records instead of CNAME records as per DNS standards but I only added the CNAME records to them for testing purposes.
 
 ## Usage
 
@@ -101,18 +123,21 @@ Start each server in separate terminal windows in the following order:
 
 ### Testing DNS Resolution
 
-You can test the DNS servers using nslookup or any other DNS query tool:
+Test the DNS servers using nslookup or other DNS query tools:
 
 1. Query for an A Record:
-   Use: nslookup google.com (server device ip address from ipconfig)
+   Use: nslookup google.com your_ip_address
 
 2. Query for an MX Record:
-   Use: nslookup -type=MX google.com (server device ip address from ipconfig)
+   Use: nslookup -type=mx google.com your_ip_address
 
-3. Reverse DNS Lookup:
-   Use: nslookup -type=ptr 2.10.20.172.in-addr.arpa (server device ip address from ipconfig)
+3. Query for a CNAME Record:
+   Use: nslookup -type=cname mail.google.com your_ip_address
 
-Note: Replace 192.168.1.4 with the IP address where your Root Server is running.
+4. Reverse DNS Lookup:
+   Use: nslookup -type=ptr your_ip_address your_ip_address
+
+Note: Replace "your_ip_address" with the IP address found using ipconfig/ifconfig.
 
 ## Project Structure
 
@@ -138,6 +163,16 @@ Note: Replace 192.168.1.4 with the IP address where your Root Server is running.
 - Verify all servers are running
 - Check IP addresses and port configurations
 - Consult dns_server.log for error messages
+
+### CNAME Resolution Issues
+- Ensure CNAME records are only configured for subdomains
+- Verify that CNAME targets exist in the DNS database
+- Check that root domains use A/AAAA records instead of CNAME
+
+### IP Address Issues
+- Confirm you're using the correct IP address from ipconfig/ifconfig
+- Ensure the IP address is accessible from your network
+- Check if any VPN connections are affecting your network configuration
 
 ## License
 
