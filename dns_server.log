@@ -426,3 +426,233 @@
 2024-12-27 17:51:11 - TLD server sent response to ('192.168.1.4', 59876) for transaction ID 3
 2024-12-27 17:51:11 - Received records from TLD server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
 2024-12-27 17:51:11 - Root server sent response to ('192.168.1.4', 59875) for transaction ID 3
+2024-12-27 18:33:52 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-27 18:33:54 - TLD DNS server started on 192.168.1.4:5301
+2024-12-27 18:33:56 - Root DNS server started on 192.168.1.4:53
+2024-12-27 18:34:29 - Root server received query from ('192.168.1.4', 62059): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 18:34:29 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 18:34:29 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 18:34:29 - Root server sent response to ('192.168.1.4', 62059) for transaction ID 1
+2024-12-27 18:34:29 - Root server received query from ('192.168.1.4', 62060): facebook.com.home, type: CNAME, transaction ID: 2
+2024-12-27 18:34:29 - Root server handling domain 'facebook.com.home' with qtype 5
+2024-12-27 18:34:29 - Domain parts: ['facebook', 'com', 'home']
+2024-12-27 18:34:29 - Extracted TLD: home
+2024-12-27 18:34:29 - TLD home not found in ROOT_DATABASE
+2024-12-27 18:34:29 - Root server sent response to ('192.168.1.4', 62060) for transaction ID 2
+2024-12-27 18:34:29 - Root server received query from ('192.168.1.4', 62061): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 18:34:29 - Root server handling domain 'facebook.com' with qtype 5
+2024-12-27 18:34:29 - Domain parts: ['facebook', 'com']
+2024-12-27 18:34:29 - Extracted TLD: com
+2024-12-27 18:34:29 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 18:34:29 - TLD server received query from ('192.168.1.4', 62062): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 18:34:29 - TLD server handling domain 'facebook.com' with qtype 5
+2024-12-27 18:34:29 - Domain parts: ['facebook', 'com']
+2024-12-27 18:34:29 - Extracted SLD: facebook, TLD: com
+2024-12-27 18:34:29 - Found SLD facebook in TLD_DATABASE under TLD com
+2024-12-27 18:34:29 - Auth server received query from ('192.168.1.4', 62063): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 18:34:29 - Authoritative server handling domain 'facebook.com' with qtype 5
+2024-12-27 18:34:29 - Found facebook.com in AUTH_DATABASE
+2024-12-27 18:34:29 - Found matching records: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com'}]
+2024-12-27 18:34:29 - Auth server sent response to ('192.168.1.4', 62063) for transaction ID 3
+2024-12-27 18:34:29 - Received records from Auth server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
+2024-12-27 18:34:29 - TLD server sent response to ('192.168.1.4', 62062) for transaction ID 3
+2024-12-27 18:34:29 - Received records from TLD server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
+2024-12-27 18:34:29 - Root server sent response to ('192.168.1.4', 62061) for transaction ID 3
+2024-12-27 18:34:38 - Root server received query from ('192.168.1.4', 62064): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 18:34:38 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 18:34:38 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 18:34:38 - Root server sent response to ('192.168.1.4', 62064) for transaction ID 1
+2024-12-27 18:34:38 - Root server received query from ('192.168.1.4', 62065): wikipedia.org.home, type: AAAA, transaction ID: 2
+2024-12-27 18:34:38 - Root server handling domain 'wikipedia.org.home' with qtype 28
+2024-12-27 18:34:38 - Domain parts: ['wikipedia', 'org', 'home']
+2024-12-27 18:34:38 - Extracted TLD: home
+2024-12-27 18:34:38 - TLD home not found in ROOT_DATABASE
+2024-12-27 18:34:38 - Root server sent response to ('192.168.1.4', 62065) for transaction ID 2
+2024-12-27 18:34:38 - Root server received query from ('192.168.1.4', 62066): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 18:34:38 - Root server handling domain 'wikipedia.org' with qtype 28
+2024-12-27 18:34:38 - Domain parts: ['wikipedia', 'org']
+2024-12-27 18:34:38 - Extracted TLD: org
+2024-12-27 18:34:38 - TLD org found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 18:34:38 - TLD server received query from ('192.168.1.4', 62067): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 18:34:38 - TLD server handling domain 'wikipedia.org' with qtype 28
+2024-12-27 18:34:38 - Domain parts: ['wikipedia', 'org']
+2024-12-27 18:34:38 - Extracted SLD: wikipedia, TLD: org
+2024-12-27 18:34:38 - Found SLD wikipedia in TLD_DATABASE under TLD org
+2024-12-27 18:34:38 - Auth server received query from ('192.168.1.4', 62068): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 18:34:38 - Authoritative server handling domain 'wikipedia.org' with qtype 28
+2024-12-27 18:34:38 - Found wikipedia.org in AUTH_DATABASE
+2024-12-27 18:34:38 - Found matching records: [{'type': 'AAAA', 'ttl': 300, 'value': '2a02:ec80:600:ed1a::1'}]
+2024-12-27 18:34:38 - Auth server sent response to ('192.168.1.4', 62068) for transaction ID 3
+2024-12-27 18:34:38 - Received records from Auth server: [{'type': 'AAAA', 'ttl': 300, 'value': '2a02:ec80:600:ed1a::1'}]
+2024-12-27 18:34:38 - TLD server sent response to ('192.168.1.4', 62067) for transaction ID 3
+2024-12-27 18:34:38 - Received records from TLD server: [{'type': 'AAAA', 'ttl': 300, 'value': '2a02:ec80:600:ed1a::1'}]
+2024-12-27 18:34:38 - Root server sent response to ('192.168.1.4', 62066) for transaction ID 3
+2024-12-27 18:35:08 - Root server received query from ('192.168.1.4', 56899): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 18:35:08 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 18:35:08 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 18:35:08 - Root server sent response to ('192.168.1.4', 56899) for transaction ID 1
+2024-12-27 18:35:08 - Root server received query from ('192.168.1.4', 56900): google.com, type: MX, transaction ID: 2
+2024-12-27 18:35:08 - Root server handling domain 'google.com' with qtype 15
+2024-12-27 18:35:08 - Domain parts: ['google', 'com']
+2024-12-27 18:35:08 - Extracted TLD: com
+2024-12-27 18:35:08 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 18:35:08 - TLD server received query from ('192.168.1.4', 56901): google.com, type: MX, transaction ID: 2
+2024-12-27 18:35:08 - TLD server handling domain 'google.com' with qtype 15
+2024-12-27 18:35:08 - Domain parts: ['google', 'com']
+2024-12-27 18:35:08 - Extracted SLD: google, TLD: com
+2024-12-27 18:35:08 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 18:35:08 - Auth server received query from ('192.168.1.4', 56902): google.com, type: MX, transaction ID: 2
+2024-12-27 18:35:08 - Authoritative server handling domain 'google.com' with qtype 15
+2024-12-27 18:35:08 - Found google.com in AUTH_DATABASE
+2024-12-27 18:35:08 - Found matching records: [{'type': 'MX', 'ttl': 300, 'value': 'smtp.google.com', 'preference': 10}]
+2024-12-27 18:35:08 - Auth server sent response to ('192.168.1.4', 56902) for transaction ID 2
+2024-12-27 18:35:08 - Received records from Auth server: [{'type': 'MX', 'ttl': 300, 'value': 'smtp.google.com.', 'preference': 10}]
+2024-12-27 18:35:08 - TLD server sent response to ('192.168.1.4', 56901) for transaction ID 2
+2024-12-27 18:35:08 - Received records from TLD server: [{'type': 'MX', 'ttl': 300, 'value': 'smtp.google.com.', 'preference': 10}]
+2024-12-27 18:35:08 - Root server sent response to ('192.168.1.4', 56900) for transaction ID 2
+2024-12-27 18:35:19 - Root server received query from ('192.168.1.4', 53986): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 18:35:19 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 18:35:19 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 18:35:19 - Root server sent response to ('192.168.1.4', 53986) for transaction ID 1
+2024-12-27 18:35:19 - Root server received query from ('192.168.1.4', 53987): facebook.com.home, type: CNAME, transaction ID: 2
+2024-12-27 18:35:19 - Root server handling domain 'facebook.com.home' with qtype 5
+2024-12-27 18:35:19 - Domain parts: ['facebook', 'com', 'home']
+2024-12-27 18:35:19 - Extracted TLD: home
+2024-12-27 18:35:19 - TLD home not found in ROOT_DATABASE
+2024-12-27 18:35:19 - Root server sent response to ('192.168.1.4', 53987) for transaction ID 2
+2024-12-27 18:35:19 - Root server received query from ('192.168.1.4', 53988): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 18:35:19 - Returning cached result for facebook.com, type=CNAME
+2024-12-27 18:35:19 - Root server sent response to ('192.168.1.4', 53988) for transaction ID 3
+2024-12-27 18:35:44 - Root server received query from ('192.168.1.4', 49814): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 18:35:44 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 18:35:44 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 18:35:44 - Root server sent response to ('192.168.1.4', 49814) for transaction ID 1
+2024-12-27 18:35:44 - Root server received query from ('192.168.1.4', 49815): google.com, type: MX, transaction ID: 2
+2024-12-27 18:35:44 - Returning cached result for google.com, type=MX
+2024-12-27 18:35:44 - Root server sent response to ('192.168.1.4', 49815) for transaction ID 2
+2024-12-27 18:36:07 - Root server received query from ('192.168.1.4', 64681): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 18:36:07 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 18:36:07 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 18:36:07 - Root server sent response to ('192.168.1.4', 64681) for transaction ID 1
+2024-12-27 18:36:07 - Root server received query from ('192.168.1.4', 64682): wikipedia.org.home, type: AAAA, transaction ID: 2
+2024-12-27 18:36:07 - Root server handling domain 'wikipedia.org.home' with qtype 28
+2024-12-27 18:36:07 - Domain parts: ['wikipedia', 'org', 'home']
+2024-12-27 18:36:07 - Extracted TLD: home
+2024-12-27 18:36:07 - TLD home not found in ROOT_DATABASE
+2024-12-27 18:36:07 - Root server sent response to ('192.168.1.4', 64682) for transaction ID 2
+2024-12-27 18:36:07 - Root server received query from ('192.168.1.4', 64683): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 18:36:07 - Returning cached result for wikipedia.org, type=AAAA
+2024-12-27 18:36:07 - Root server sent response to ('192.168.1.4', 64683) for transaction ID 3
+2024-12-27 22:58:34 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-27 22:58:36 - TLD DNS server started on 192.168.1.4:5301
+2024-12-27 22:58:38 - Root DNS server started on 192.168.1.4:53
+2024-12-27 22:59:03 - Root server received query from ('192.168.1.4', 57929): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 22:59:03 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 22:59:03 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 22:59:03 - Root server sent response to ('192.168.1.4', 57929) for transaction ID 1
+2024-12-27 22:59:03 - Root server received query from ('192.168.1.4', 57930): facebook.com.home, type: CNAME, transaction ID: 2
+2024-12-27 22:59:03 - Root server handling domain 'facebook.com.home' with qtype 5
+2024-12-27 22:59:03 - Domain parts: ['facebook', 'com', 'home']
+2024-12-27 22:59:03 - Extracted TLD: home
+2024-12-27 22:59:03 - TLD home not found in ROOT_DATABASE
+2024-12-27 22:59:03 - Root server sent response to ('192.168.1.4', 57930) for transaction ID 2
+2024-12-27 22:59:03 - Root server received query from ('192.168.1.4', 57931): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 22:59:03 - Root server handling domain 'facebook.com' with qtype 5
+2024-12-27 22:59:03 - Domain parts: ['facebook', 'com']
+2024-12-27 22:59:03 - Extracted TLD: com
+2024-12-27 22:59:03 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 22:59:03 - TLD server received query from ('192.168.1.4', 57932): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 22:59:03 - TLD server handling domain 'facebook.com' with qtype 5
+2024-12-27 22:59:03 - Domain parts: ['facebook', 'com']
+2024-12-27 22:59:03 - Extracted SLD: facebook, TLD: com
+2024-12-27 22:59:03 - Found SLD facebook in TLD_DATABASE under TLD com
+2024-12-27 22:59:03 - Auth server received query from ('192.168.1.4', 57933): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 22:59:03 - Authoritative server handling domain 'facebook.com' with qtype 5
+2024-12-27 22:59:03 - Found facebook.com in AUTH_DATABASE
+2024-12-27 22:59:03 - Found matching records: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com'}]
+2024-12-27 22:59:03 - Auth server sent response to ('192.168.1.4', 57933) for transaction ID 3
+2024-12-27 22:59:03 - Received records from Auth server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
+2024-12-27 22:59:03 - TLD server sent response to ('192.168.1.4', 57932) for transaction ID 3
+2024-12-27 22:59:03 - Received records from TLD server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
+2024-12-27 22:59:03 - Root server sent response to ('192.168.1.4', 57931) for transaction ID 3
+2024-12-27 22:59:18 - Root server received query from ('192.168.1.4', 56331): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 22:59:18 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 22:59:18 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 22:59:18 - Root server sent response to ('192.168.1.4', 56331) for transaction ID 1
+2024-12-27 22:59:18 - Root server received query from ('192.168.1.4', 56332): facebookl.com.home, type: CNAME, transaction ID: 2
+2024-12-27 22:59:18 - Root server handling domain 'facebookl.com.home' with qtype 5
+2024-12-27 22:59:18 - Domain parts: ['facebookl', 'com', 'home']
+2024-12-27 22:59:18 - Extracted TLD: home
+2024-12-27 22:59:18 - TLD home not found in ROOT_DATABASE
+2024-12-27 22:59:18 - Root server sent response to ('192.168.1.4', 56332) for transaction ID 2
+2024-12-27 22:59:18 - Root server received query from ('192.168.1.4', 56333): facebookl.com, type: CNAME, transaction ID: 3
+2024-12-27 22:59:18 - Root server handling domain 'facebookl.com' with qtype 5
+2024-12-27 22:59:18 - Domain parts: ['facebookl', 'com']
+2024-12-27 22:59:18 - Extracted TLD: com
+2024-12-27 22:59:18 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 22:59:18 - TLD server received query from ('192.168.1.4', 56334): facebookl.com, type: CNAME, transaction ID: 3
+2024-12-27 22:59:18 - TLD server handling domain 'facebookl.com' with qtype 5
+2024-12-27 22:59:18 - Domain parts: ['facebookl', 'com']
+2024-12-27 22:59:18 - Extracted SLD: facebookl, TLD: com
+2024-12-27 22:59:18 - SLD facebookl not found in TLD_DATABASE under TLD com
+2024-12-27 22:59:18 - TLD server sent response to ('192.168.1.4', 56334) for transaction ID 3
+2024-12-27 22:59:18 - No records received from TLD server for domain facebookl.com
+2024-12-27 22:59:18 - Root server sent response to ('192.168.1.4', 56333) for transaction ID 3
+2024-12-27 23:04:54 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-27 23:04:56 - TLD DNS server started on 192.168.1.4:5301
+2024-12-27 23:04:59 - Root DNS server started on 192.168.1.4:53
+2024-12-27 23:05:07 - Root server received query from ('192.168.1.4', 50955): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 23:05:07 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 23:05:07 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 23:05:07 - Root server sent response to ('192.168.1.4', 50955) for transaction ID 1
+2024-12-27 23:05:07 - Root server received query from ('192.168.1.4', 50956): facebookl.com.home, type: CNAME, transaction ID: 2
+2024-12-27 23:05:07 - Root server handling domain 'facebookl.com.home' with qtype 5
+2024-12-27 23:05:07 - Domain parts: ['facebookl', 'com', 'home']
+2024-12-27 23:05:07 - Extracted TLD: home
+2024-12-27 23:05:07 - TLD home not found in ROOT_DATABASE
+2024-12-27 23:05:07 - this is an nxDomain issue responseb'\x00\x02\x81\x83\x00\x01\x00\x00\x00\x00\x00\x00\tfacebookl\x03com\x04home\x00\x00\x05\x00\x01'
+2024-12-27 23:05:07 - Root server sent response to ('192.168.1.4', 50956) for transaction ID 2
+2024-12-27 23:05:07 - Root server received query from ('192.168.1.4', 50957): facebookl.com, type: CNAME, transaction ID: 3
+2024-12-27 23:05:07 - Root server handling domain 'facebookl.com' with qtype 5
+2024-12-27 23:05:07 - Domain parts: ['facebookl', 'com']
+2024-12-27 23:05:07 - Extracted TLD: com
+2024-12-27 23:05:07 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 23:05:07 - TLD server received query from ('192.168.1.4', 50958): facebookl.com, type: CNAME, transaction ID: 3
+2024-12-27 23:05:07 - TLD server handling domain 'facebookl.com' with qtype 5
+2024-12-27 23:05:07 - Domain parts: ['facebookl', 'com']
+2024-12-27 23:05:07 - Extracted SLD: facebookl, TLD: com
+2024-12-27 23:05:07 - SLD facebookl not found in TLD_DATABASE under TLD com
+2024-12-27 23:05:07 - TLD server sent response to ('192.168.1.4', 50958) for transaction ID 3
+2024-12-27 23:05:07 - No records received from TLD server for domain facebookl.com
+2024-12-27 23:05:07 - this is an nxDomain issue responseb'\x00\x03\x81\x83\x00\x01\x00\x00\x00\x00\x00\x00\tfacebookl\x03com\x00\x00\x05\x00\x01'
+2024-12-27 23:05:07 - Root server sent response to ('192.168.1.4', 50957) for transaction ID 3
+
+2024-12-27 23:35:34 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-27 23:35:36 - TLD DNS server started on 192.168.1.4:5301
+2024-12-27 23:35:39 - Root DNS server started on 192.168.1.4:53
+2024-12-27 23:35:50 - Root server received query from ('192.168.1.4', 65518): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 23:35:50 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 23:35:50 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 23:35:50 - Root server sent response to ('192.168.1.4', 65518) for transaction ID 1
+2024-12-27 23:35:50 - Root server received query from ('192.168.1.4', 65519): facebookl.com.home, type: CNAME, transaction ID: 2
+2024-12-27 23:35:50 - Root server handling domain 'facebookl.com.home' with qtype 5
+2024-12-27 23:35:50 - Domain parts: ['facebookl', 'com', 'home']
+2024-12-27 23:35:50 - Extracted TLD: home
+2024-12-27 23:35:50 - TLD home not found in ROOT_DATABASE
+2024-12-27 23:35:50 - ROOT server generated NXDOMAIN response for Transaction ID: 2, Domain: facebookl.com.home, Type: CNAME
+2024-12-27 23:35:50 - Root server sent response to ('192.168.1.4', 65519) for transaction ID 2
+2024-12-27 23:35:50 - Root server received query from ('192.168.1.4', 65520): facebookl.com, type: CNAME, transaction ID: 3
+2024-12-27 23:35:50 - Root server handling domain 'facebookl.com' with qtype 5
+2024-12-27 23:35:50 - Domain parts: ['facebookl', 'com']
+2024-12-27 23:35:50 - Extracted TLD: com
+2024-12-27 23:35:50 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 23:35:50 - TLD server received query from ('192.168.1.4', 65521): facebookl.com, type: CNAME, transaction ID: 3
+2024-12-27 23:35:50 - TLD server handling domain 'facebookl.com' with qtype 5
+2024-12-27 23:35:50 - Domain parts: ['facebookl', 'com']
+2024-12-27 23:35:50 - Extracted SLD: facebookl, TLD: com
+2024-12-27 23:35:50 - SLD facebookl not found in TLD_DATABASE under TLD com
+2024-12-27 23:35:50 - TLD server generated NXDOMAIN response for Transaction ID: 3, Domain: facebookl.com, Type: CNAME
+2024-12-27 23:35:50 - TLD server sent response to ('192.168.1.4', 65521) for transaction ID 3
+2024-12-27 23:35:50 - No records received from TLD server for domain facebookl.com
+2024-12-27 23:35:50 - ROOT server generated NXDOMAIN response for Transaction ID: 3, Domain: facebookl.com, Type: CNAME
+2024-12-27 23:35:50 - Root server sent response to ('192.168.1.4', 65520) for transaction ID 3

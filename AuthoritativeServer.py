@@ -1,5 +1,5 @@
 import socket
-from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log
+from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log, parse_nxdomain_response
 
 AUTH_DATABASE = {
     "google.com": [
@@ -60,6 +60,8 @@ def start_auth_server(ip="192.168.1.4", port=5302):
             response = build_response(transaction_id, domain, qtype, records)
         else:
             response = build_nxdomain(transaction_id, domain, qtype)
+            nx_transaction_id, nx_domain, nx_qtype = parse_nxdomain_response(response)
+            log(f"Auth server generated NXDOMAIN response for Transaction ID: {nx_transaction_id}, Domain: {nx_domain}, Type: {nx_qtype}")
         sock.sendto(response, addr)
         log(f"Auth server sent response to {addr} for transaction ID {transaction_id}")
 

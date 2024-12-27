@@ -1,5 +1,5 @@
 import socket, time
-from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log, forward_query
+from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log, forward_query, parse_nxdomain_response
 
 ROOT_DATABASE = {
     "com": {"type":"NS","ttl":300,"value":"ns.com.tld."},
@@ -81,6 +81,8 @@ def start_root_server(ip="192.168.1.4", port=53):
             response = build_response(transaction_id, domain, qtype, records)
         else:
             response = build_nxdomain(transaction_id, domain, qtype)
+            nx_transaction_id, nx_domain, nx_qtype = parse_nxdomain_response(response)
+            log(f"ROOT server generated NXDOMAIN response for Transaction ID: {nx_transaction_id}, Domain: {nx_domain}, Type: {nx_qtype}")
         sock.sendto(response, addr)
         log(f"Root server sent response to {addr} for transaction ID {transaction_id}")
 

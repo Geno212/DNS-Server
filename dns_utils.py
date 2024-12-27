@@ -109,6 +109,33 @@ def build_nxdomain(transaction_id, domain, qtype):
     response += struct.pack(">HH", qtype, 1)
     return response
 
+
+def parse_nxdomain_response(data):
+    """
+    Parse response from a known NXDOMAIN response built with build_nxdomain()
+    """
+    transaction_id = struct.unpack(">H", data[:2])[0]
+    flags = struct.unpack(">H", data[2:4])[0]
+    qdcount = struct.unpack(">H", data[4:6])[0]
+
+    # Extract domain name from question section
+    pos = 12
+    domain_parts = []
+    while data[pos] != 0:
+        length = data[pos]
+        pos += 1
+        domain_parts.append(data[pos:pos + length].decode())
+        pos += length
+    domain = ".".join(domain_parts)
+
+    # Extract query type
+    qtype = struct.unpack(">H", data[pos + 1:pos + 3])[0]
+    qtype_str = RECORD_TYPES.get(qtype, "UNKNOWN")
+
+    #log(f"NXDOMAIN Response - Transaction ID: {transaction_id}, Domain: {domain}, Type: {qtype_str}")
+
+    return transaction_id, domain, qtype_str
+
 def build_query(domain, qtype, transaction_id=None):
     if transaction_id is None:
         # Generate a random transaction_id
