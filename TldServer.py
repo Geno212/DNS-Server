@@ -12,7 +12,7 @@ TLD_DATABASE = {
     "2.10.20.172.in-addr.arpa": {"type": "PTR", "ttl": 300, "value": "tld-dns.local"}
 }
 
-AUTH_SERVER = ("172.20.10.2", 5302)
+AUTH_SERVER = ("192.168.1.4", 5302)
 
 CACHE = {}  # {(domain, qtype_str): (records, expiration_time)}
 
@@ -73,7 +73,7 @@ def find_record(domain, qtype, transaction_id):
         log(f"SLD {sld} not found in TLD_DATABASE under TLD {tld}")
     return None
 
-def start_tld_server(ip="172.20.10.2", port=5301):
+def start_tld_server(ip="192.168.1.4", port=5301):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"TLD DNS server started on {ip}:{port}")

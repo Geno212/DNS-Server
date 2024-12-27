@@ -4,10 +4,10 @@ from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES,
 ROOT_DATABASE = {
     "com": {"type":"NS","ttl":300,"value":"ns.com.tld."},
     "org": {"type":"NS","ttl":300,"value":"ns.org.tld."},
-    "2.10.20.172.in-addr.arpa": {"type": "PTR", "ttl": 300, "value": "anaBahebMarwan-root-dns.local"}
+    "4.1.168.192.in-addr.arpa": {"type": "PTR", "ttl": 300, "value": "Our-Networks-DNS-Server-root-dns.local"}
 }
 
-TLD_SERVER = ("172.20.10.2", 5301)
+TLD_SERVER = ("192.168.1.4", 5301)
 
 CACHE = {}  # {(domain, qtype_str): (records, expiration_time)}
 
@@ -65,7 +65,7 @@ def find_record(domain, qtype, transaction_id):
         log(f"TLD {tld} not found in ROOT_DATABASE")
     return None
 
-def start_root_server(ip="172.20.10.2", port=53):
+def start_root_server(ip="192.168.1.4", port=53):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"Root DNS server started on {ip}:{port}")

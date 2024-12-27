@@ -1,58 +1,428 @@
-
-2024-12-26 14:34:53 - Authoritative DNS server started on 172.20.10.2:5302
-2024-12-26 14:34:56 - TLD DNS server started on 172.20.10.2:5301
-2024-12-26 14:34:58 - Root DNS server started on 172.20.10.2:53
-2024-12-26 14:35:49 - Root server query: 2.10.20.172.in-addr.arpa, type: PTR
-2024-12-26 14:35:49 - Root server query: google.com, type: MX
-2024-12-26 14:35:49 - TLD server query: google.com, type: MX
-2024-12-26 14:35:49 - Auth server query: google.com, type: MX
-2024-12-26 14:39:29 - Authoritative DNS server started on 172.20.10.2:5302
-2024-12-26 14:39:32 - TLD DNS server started on 172.20.10.2:5301
-2024-12-26 14:39:34 - Root DNS server started on 172.20.10.2:53
-2024-12-26 14:39:49 - Root server query: 2.10.20.172.in-addr.arpa, type: PTR
-2024-12-26 14:39:49 - Root server query: google.com, type: NS
-2024-12-26 14:39:49 - TLD server query: google.com, type: NS
-2024-12-26 14:39:49 - Auth server query: google.com, type: NS
-2024-12-26 14:57:14 - Authoritative DNS server started on 172.20.10.2:5302
-2024-12-26 14:57:17 - TLD DNS server started on 172.20.10.2:5301
-2024-12-26 14:57:19 - Root DNS server started on 172.20.10.2:53
-2024-12-26 14:57:50 - Root server received query from ('172.20.10.8', 51311): 2.10.20.172.in-addr.arpa, type: PTR, transaction ID: 1
-2024-12-26 14:57:50 - Root server handling domain '2.10.20.172.in-addr.arpa' with qtype 12
-2024-12-26 14:57:50 - Found 2.10.20.172.in-addr.arpa in ROOT_DATABASE
-2024-12-26 14:57:50 - Root server sent response to ('172.20.10.8', 51311) for transaction ID 1
-2024-12-26 14:57:52 - Root server received query from ('172.20.10.8', 51312): google.com, type: NS, transaction ID: 2
-2024-12-26 14:57:52 - Root server handling domain 'google.com' with qtype 2
-2024-12-26 14:57:52 - Domain parts: ['google', 'com']
-2024-12-26 14:57:52 - Extracted TLD: com
-2024-12-26 14:57:52 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
-2024-12-26 14:57:52 - TLD server received query from ('172.20.10.2', 57182): google.com, type: NS, transaction ID: 2
-2024-12-26 14:57:52 - TLD server handling domain 'google.com' with qtype 2
-2024-12-26 14:57:52 - Domain parts: ['google', 'com']
-2024-12-26 14:57:52 - Extracted SLD: google, TLD: com
-2024-12-26 14:57:52 - Found SLD google in TLD_DATABASE under TLD com
-2024-12-26 14:57:52 - Auth server received query from ('172.20.10.2', 57183): google.com, type: NS, transaction ID: 2
-2024-12-26 14:57:52 - Authoritative server handling domain 'google.com' with qtype 2
-2024-12-26 14:57:52 - Found google.com in AUTH_DATABASE
-2024-12-26 14:57:52 - Found matching records: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.com'}]
-2024-12-26 14:57:52 - Auth server sent response to ('172.20.10.2', 57183) for transaction ID 2
-2024-12-26 14:57:52 - Received records from Auth server: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.com.'}]
-2024-12-26 14:57:52 - TLD server sent response to ('172.20.10.2', 57182) for transaction ID 2
-2024-12-26 14:57:52 - Received records from TLD server: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.com.'}]
-2024-12-26 14:57:52 - Root server sent response to ('172.20.10.8', 51312) for transaction ID 2
-2024-12-26 14:58:13 - Root server received query from ('172.20.10.8', 61819): 2.10.20.172.in-addr.arpa, type: PTR, transaction ID: 1
-2024-12-26 14:58:13 - Root server handling domain '2.10.20.172.in-addr.arpa' with qtype 12
-2024-12-26 14:58:13 - Found 2.10.20.172.in-addr.arpa in ROOT_DATABASE
-2024-12-26 14:58:13 - Root server sent response to ('172.20.10.8', 61819) for transaction ID 1
-2024-12-26 14:58:13 - Root server received query from ('172.20.10.8', 61820): google.com, type: NS, transaction ID: 2
-2024-12-26 14:58:13 - Returning cached result for google.com, type=NS
-2024-12-26 14:58:13 - Root server sent response to ('172.20.10.8', 61820) for transaction ID 2
-2024-12-26 14:58:13 - Root server received query from ('172.20.10.8', 61821): google.com, type: NS, transaction ID: 3
-2024-12-26 14:58:13 - Returning cached result for google.com, type=NS
-2024-12-26 14:58:13 - Root server sent response to ('172.20.10.8', 61821) for transaction ID 3
-2024-12-26 14:58:31 - Root server received query from ('172.20.10.8', 50926): 2.10.20.172.in-addr.arpa, type: PTR, transaction ID: 1
-2024-12-26 14:58:31 - Root server handling domain '2.10.20.172.in-addr.arpa' with qtype 12
-2024-12-26 14:58:31 - Found 2.10.20.172.in-addr.arpa in ROOT_DATABASE
-2024-12-26 14:58:31 - Root server sent response to ('172.20.10.8', 50926) for transaction ID 1
-2024-12-26 14:58:31 - Root server received query from ('172.20.10.8', 50927): google.com, type: NS, transaction ID: 2
-2024-12-26 14:58:31 - Returning cached result for google.com, type=NS
-2024-12-26 14:58:31 - Root server sent response to ('172.20.10.8', 50927) for transaction ID 2
+2024-12-27 16:18:25 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-27 16:18:27 - TLD DNS server started on 192.168.1.4:5301
+2024-12-27 16:18:28 - Root DNS server started on 192.168.1.4:53
+2024-12-27 16:18:38 - Root server received query from ('192.168.1.4', 53803): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:18:38 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:18:38 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:18:38 - Root server sent response to ('192.168.1.4', 53803) for transaction ID 1
+2024-12-27 16:18:38 - Root server received query from ('192.168.1.4', 53804): google.com.home, type: A, transaction ID: 2
+2024-12-27 16:18:38 - Root server handling domain 'google.com.home' with qtype 1
+2024-12-27 16:18:38 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:18:38 - Extracted TLD: home
+2024-12-27 16:18:38 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:18:38 - Root server sent response to ('192.168.1.4', 53804) for transaction ID 2
+2024-12-27 16:18:38 - Root server received query from ('192.168.1.4', 53805): google.com.home, type: AAAA, transaction ID: 3
+2024-12-27 16:18:38 - Root server handling domain 'google.com.home' with qtype 28
+2024-12-27 16:18:38 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:18:38 - Extracted TLD: home
+2024-12-27 16:18:38 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:18:38 - Root server sent response to ('192.168.1.4', 53805) for transaction ID 3
+2024-12-27 16:18:38 - Root server received query from ('192.168.1.4', 53806): google.com, type: A, transaction ID: 4
+2024-12-27 16:18:38 - Root server handling domain 'google.com' with qtype 1
+2024-12-27 16:18:38 - Domain parts: ['google', 'com']
+2024-12-27 16:18:38 - Extracted TLD: com
+2024-12-27 16:18:38 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:18:38 - TLD server received query from ('192.168.1.4', 53807): google.com, type: A, transaction ID: 4
+2024-12-27 16:18:38 - TLD server handling domain 'google.com' with qtype 1
+2024-12-27 16:18:38 - Domain parts: ['google', 'com']
+2024-12-27 16:18:38 - Extracted SLD: google, TLD: com
+2024-12-27 16:18:38 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:18:38 - Auth server received query from ('192.168.1.4', 53808): google.com, type: A, transaction ID: 4
+2024-12-27 16:18:38 - Authoritative server handling domain 'google.com' with qtype 1
+2024-12-27 16:18:38 - Found google.com in AUTH_DATABASE
+2024-12-27 16:18:38 - Found matching records: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:18:38 - Auth server sent response to ('192.168.1.4', 53808) for transaction ID 4
+2024-12-27 16:18:38 - Received records from Auth server: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:18:38 - TLD server sent response to ('192.168.1.4', 53807) for transaction ID 4
+2024-12-27 16:18:38 - Received records from TLD server: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:18:38 - Root server sent response to ('192.168.1.4', 53806) for transaction ID 4
+2024-12-27 16:18:38 - Root server received query from ('192.168.1.4', 53809): google.com, type: AAAA, transaction ID: 5
+2024-12-27 16:18:38 - Root server handling domain 'google.com' with qtype 28
+2024-12-27 16:18:38 - Domain parts: ['google', 'com']
+2024-12-27 16:18:38 - Extracted TLD: com
+2024-12-27 16:18:38 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:18:38 - TLD server received query from ('192.168.1.4', 53810): google.com, type: AAAA, transaction ID: 5
+2024-12-27 16:18:38 - TLD server handling domain 'google.com' with qtype 28
+2024-12-27 16:18:38 - Domain parts: ['google', 'com']
+2024-12-27 16:18:38 - Extracted SLD: google, TLD: com
+2024-12-27 16:18:38 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:18:38 - Auth server received query from ('192.168.1.4', 53811): google.com, type: AAAA, transaction ID: 5
+2024-12-27 16:18:38 - Authoritative server handling domain 'google.com' with qtype 28
+2024-12-27 16:18:38 - Found google.com in AUTH_DATABASE
+2024-12-27 16:18:38 - Found matching records: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:18:38 - Auth server sent response to ('192.168.1.4', 53811) for transaction ID 5
+2024-12-27 16:18:38 - Received records from Auth server: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:18:38 - TLD server sent response to ('192.168.1.4', 53810) for transaction ID 5
+2024-12-27 16:18:38 - Received records from TLD server: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:18:38 - Root server sent response to ('192.168.1.4', 53809) for transaction ID 5
+2024-12-27 16:24:09 - Root server received query from ('192.168.1.4', 50852): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:24:09 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:24:09 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:24:09 - Root server sent response to ('192.168.1.4', 50852) for transaction ID 1
+2024-12-27 16:24:09 - Root server received query from ('192.168.1.4', 50853): google.com.home, type: NS, transaction ID: 2
+2024-12-27 16:24:09 - Root server handling domain 'google.com.home' with qtype 2
+2024-12-27 16:24:09 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:24:09 - Extracted TLD: home
+2024-12-27 16:24:09 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:24:09 - Root server sent response to ('192.168.1.4', 50853) for transaction ID 2
+2024-12-27 16:24:09 - Root server received query from ('192.168.1.4', 50854): google.com, type: NS, transaction ID: 3
+2024-12-27 16:24:09 - Root server handling domain 'google.com' with qtype 2
+2024-12-27 16:24:09 - Domain parts: ['google', 'com']
+2024-12-27 16:24:09 - Extracted TLD: com
+2024-12-27 16:24:09 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:24:09 - TLD server received query from ('192.168.1.4', 50855): google.com, type: NS, transaction ID: 3
+2024-12-27 16:24:09 - TLD server handling domain 'google.com' with qtype 2
+2024-12-27 16:24:09 - Domain parts: ['google', 'com']
+2024-12-27 16:24:09 - Extracted SLD: google, TLD: com
+2024-12-27 16:24:09 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:24:09 - Auth server received query from ('192.168.1.4', 50856): google.com, type: NS, transaction ID: 3
+2024-12-27 16:24:09 - Authoritative server handling domain 'google.com' with qtype 2
+2024-12-27 16:24:09 - Found google.com in AUTH_DATABASE
+2024-12-27 16:24:09 - Found matching records: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.com'}]
+2024-12-27 16:24:09 - Auth server sent response to ('192.168.1.4', 50856) for transaction ID 3
+2024-12-27 16:24:09 - Received records from Auth server: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.com.'}]
+2024-12-27 16:24:09 - TLD server sent response to ('192.168.1.4', 50855) for transaction ID 3
+2024-12-27 16:24:09 - Received records from TLD server: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.com.'}]
+2024-12-27 16:24:09 - Root server sent response to ('192.168.1.4', 50854) for transaction ID 3
+2024-12-27 16:26:46 - Root server received query from ('192.168.1.4', 60176): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:26:46 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:26:46 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:26:46 - Root server sent response to ('192.168.1.4', 60176) for transaction ID 1
+2024-12-27 16:26:46 - Root server received query from ('192.168.1.4', 60177): google.com, type: MX, transaction ID: 2
+2024-12-27 16:26:46 - Root server handling domain 'google.com' with qtype 15
+2024-12-27 16:26:46 - Domain parts: ['google', 'com']
+2024-12-27 16:26:46 - Extracted TLD: com
+2024-12-27 16:26:46 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:26:46 - TLD server received query from ('192.168.1.4', 60178): google.com, type: MX, transaction ID: 2
+2024-12-27 16:26:46 - TLD server handling domain 'google.com' with qtype 15
+2024-12-27 16:26:46 - Domain parts: ['google', 'com']
+2024-12-27 16:26:46 - Extracted SLD: google, TLD: com
+2024-12-27 16:26:46 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:26:46 - Auth server received query from ('192.168.1.4', 60179): google.com, type: MX, transaction ID: 2
+2024-12-27 16:26:46 - Authoritative server handling domain 'google.com' with qtype 15
+2024-12-27 16:26:46 - Found google.com in AUTH_DATABASE
+2024-12-27 16:26:46 - Found matching records: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com', 'preference': 10}]
+2024-12-27 16:26:46 - Auth server sent response to ('192.168.1.4', 60179) for transaction ID 2
+2024-12-27 16:26:46 - Received records from Auth server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com.', 'preference': 10}]
+2024-12-27 16:26:46 - TLD server sent response to ('192.168.1.4', 60178) for transaction ID 2
+2024-12-27 16:26:46 - Received records from TLD server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com.', 'preference': 10}]
+2024-12-27 16:26:46 - Root server sent response to ('192.168.1.4', 60177) for transaction ID 2
+2024-12-27 16:28:16 - Root server received query from ('192.168.1.4', 60835): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:28:16 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:28:16 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:28:16 - Root server sent response to ('192.168.1.4', 60835) for transaction ID 1
+2024-12-27 16:28:16 - Root server received query from ('192.168.1.4', 60836): google.com, type: A, transaction ID: 2
+2024-12-27 16:28:16 - Root server handling domain 'google.com' with qtype 1
+2024-12-27 16:28:16 - Domain parts: ['google', 'com']
+2024-12-27 16:28:16 - Extracted TLD: com
+2024-12-27 16:28:16 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:28:16 - TLD server received query from ('192.168.1.4', 60837): google.com, type: A, transaction ID: 2
+2024-12-27 16:28:16 - TLD server handling domain 'google.com' with qtype 1
+2024-12-27 16:28:16 - Domain parts: ['google', 'com']
+2024-12-27 16:28:16 - Extracted SLD: google, TLD: com
+2024-12-27 16:28:16 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:28:16 - Auth server received query from ('192.168.1.4', 60838): google.com, type: A, transaction ID: 2
+2024-12-27 16:28:16 - Authoritative server handling domain 'google.com' with qtype 1
+2024-12-27 16:28:16 - Found google.com in AUTH_DATABASE
+2024-12-27 16:28:16 - Found matching records: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:28:16 - Auth server sent response to ('192.168.1.4', 60838) for transaction ID 2
+2024-12-27 16:28:16 - Received records from Auth server: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:28:16 - TLD server sent response to ('192.168.1.4', 60837) for transaction ID 2
+2024-12-27 16:28:16 - Received records from TLD server: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:28:16 - Root server sent response to ('192.168.1.4', 60836) for transaction ID 2
+2024-12-27 16:29:54 - Root server received query from ('192.168.1.4', 50577): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:29:54 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:29:54 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:29:54 - Root server sent response to ('192.168.1.4', 50577) for transaction ID 1
+2024-12-27 16:29:54 - Root server received query from ('192.168.1.4', 50578): google.com, type: AAAA, transaction ID: 2
+2024-12-27 16:29:54 - Root server handling domain 'google.com' with qtype 28
+2024-12-27 16:29:54 - Domain parts: ['google', 'com']
+2024-12-27 16:29:54 - Extracted TLD: com
+2024-12-27 16:29:54 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:29:54 - TLD server received query from ('192.168.1.4', 50579): google.com, type: AAAA, transaction ID: 2
+2024-12-27 16:29:54 - TLD server handling domain 'google.com' with qtype 28
+2024-12-27 16:29:54 - Domain parts: ['google', 'com']
+2024-12-27 16:29:54 - Extracted SLD: google, TLD: com
+2024-12-27 16:29:54 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:29:54 - Auth server received query from ('192.168.1.4', 50580): google.com, type: AAAA, transaction ID: 2
+2024-12-27 16:29:54 - Authoritative server handling domain 'google.com' with qtype 28
+2024-12-27 16:29:54 - Found google.com in AUTH_DATABASE
+2024-12-27 16:29:54 - Found matching records: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:29:54 - Auth server sent response to ('192.168.1.4', 50580) for transaction ID 2
+2024-12-27 16:29:54 - Received records from Auth server: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:29:54 - TLD server sent response to ('192.168.1.4', 50579) for transaction ID 2
+2024-12-27 16:29:54 - Received records from TLD server: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:29:54 - Root server sent response to ('192.168.1.4', 50578) for transaction ID 2
+2024-12-27 16:31:29 - Root server received query from ('192.168.1.4', 49378): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:31:29 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:31:29 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:31:29 - Root server sent response to ('192.168.1.4', 49378) for transaction ID 1
+2024-12-27 16:31:29 - Root server received query from ('192.168.1.4', 49379): google.com, type: PTR, transaction ID: 2
+2024-12-27 16:31:29 - Root server handling domain 'google.com' with qtype 12
+2024-12-27 16:31:29 - Domain parts: ['google', 'com']
+2024-12-27 16:31:29 - Extracted TLD: com
+2024-12-27 16:31:29 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:31:29 - TLD server received query from ('192.168.1.4', 49380): google.com, type: PTR, transaction ID: 2
+2024-12-27 16:31:29 - TLD server handling domain 'google.com' with qtype 12
+2024-12-27 16:31:29 - Domain parts: ['google', 'com']
+2024-12-27 16:31:29 - Extracted SLD: google, TLD: com
+2024-12-27 16:31:29 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:31:29 - Auth server received query from ('192.168.1.4', 49381): google.com, type: PTR, transaction ID: 2
+2024-12-27 16:31:29 - Authoritative server handling domain 'google.com' with qtype 12
+2024-12-27 16:31:29 - Found google.com in AUTH_DATABASE
+2024-12-27 16:31:29 - No records of type PTR for domain google.com
+2024-12-27 16:31:29 - Auth server sent response to ('192.168.1.4', 49381) for transaction ID 2
+2024-12-27 16:31:29 - No direct record from Auth server for domain google.com, using NS record as fallback
+2024-12-27 16:31:29 - TLD server sent response to ('192.168.1.4', 49380) for transaction ID 2
+2024-12-27 16:31:29 - Received records from TLD server: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.auth.'}]
+2024-12-27 16:31:29 - Root server sent response to ('192.168.1.4', 49379) for transaction ID 2
+2024-12-27 16:33:31 - Root server received query from ('192.168.1.4', 63956): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:33:31 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:33:31 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:33:31 - Root server sent response to ('192.168.1.4', 63956) for transaction ID 1
+2024-12-27 16:33:31 - Root server received query from ('192.168.1.4', 63957): google.com.home, type: AAAA, transaction ID: 2
+2024-12-27 16:33:31 - Root server handling domain 'google.com.home' with qtype 28
+2024-12-27 16:33:31 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:33:31 - Extracted TLD: home
+2024-12-27 16:33:31 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:33:31 - Root server sent response to ('192.168.1.4', 63957) for transaction ID 2
+2024-12-27 16:33:31 - Root server received query from ('192.168.1.4', 63958): google.com, type: AAAA, transaction ID: 3
+2024-12-27 16:33:31 - Returning cached result for google.com, type=AAAA
+2024-12-27 16:33:31 - Root server sent response to ('192.168.1.4', 63958) for transaction ID 3
+2024-12-27 16:35:49 - Root server received query from ('192.168.1.4', 54428): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:35:49 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:35:49 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:35:49 - Root server sent response to ('192.168.1.4', 54428) for transaction ID 1
+2024-12-27 16:35:49 - Root server received query from ('192.168.1.4', 54429): google.com.home, type: MX, transaction ID: 2
+2024-12-27 16:35:49 - Root server handling domain 'google.com.home' with qtype 15
+2024-12-27 16:35:49 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:35:49 - Extracted TLD: home
+2024-12-27 16:35:49 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:35:49 - Root server sent response to ('192.168.1.4', 54429) for transaction ID 2
+2024-12-27 16:35:49 - Root server received query from ('192.168.1.4', 54430): google.com, type: MX, transaction ID: 3
+2024-12-27 16:35:49 - Root server handling domain 'google.com' with qtype 15
+2024-12-27 16:35:49 - Domain parts: ['google', 'com']
+2024-12-27 16:35:49 - Extracted TLD: com
+2024-12-27 16:35:49 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:35:49 - TLD server received query from ('192.168.1.4', 54431): google.com, type: MX, transaction ID: 3
+2024-12-27 16:35:49 - TLD server handling domain 'google.com' with qtype 15
+2024-12-27 16:35:49 - Domain parts: ['google', 'com']
+2024-12-27 16:35:49 - Extracted SLD: google, TLD: com
+2024-12-27 16:35:49 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:35:49 - Auth server received query from ('192.168.1.4', 54432): google.com, type: MX, transaction ID: 3
+2024-12-27 16:35:49 - Authoritative server handling domain 'google.com' with qtype 15
+2024-12-27 16:35:49 - Found google.com in AUTH_DATABASE
+2024-12-27 16:35:49 - Found matching records: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com', 'preference': 10}]
+2024-12-27 16:35:49 - Auth server sent response to ('192.168.1.4', 54432) for transaction ID 3
+2024-12-27 16:35:49 - Received records from Auth server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com.', 'preference': 10}]
+2024-12-27 16:35:49 - TLD server sent response to ('192.168.1.4', 54431) for transaction ID 3
+2024-12-27 16:35:49 - Received records from TLD server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com.', 'preference': 10}]
+2024-12-27 16:35:49 - Root server sent response to ('192.168.1.4', 54430) for transaction ID 3
+2024-12-27 16:40:01 - Root server received query from ('192.168.1.4', 51842): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:40:01 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:40:01 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:40:01 - Root server sent response to ('192.168.1.4', 51842) for transaction ID 1
+2024-12-27 16:40:01 - Root server received query from ('192.168.1.4', 51843): google.com.home, type: AAAA, transaction ID: 2
+2024-12-27 16:40:01 - Root server handling domain 'google.com.home' with qtype 28
+2024-12-27 16:40:01 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:40:01 - Extracted TLD: home
+2024-12-27 16:40:01 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:40:01 - Root server sent response to ('192.168.1.4', 51843) for transaction ID 2
+2024-12-27 16:40:01 - Root server received query from ('192.168.1.4', 51844): google.com, type: AAAA, transaction ID: 3
+2024-12-27 16:40:01 - Root server handling domain 'google.com' with qtype 28
+2024-12-27 16:40:01 - Domain parts: ['google', 'com']
+2024-12-27 16:40:01 - Extracted TLD: com
+2024-12-27 16:40:01 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:40:01 - TLD server received query from ('192.168.1.4', 51845): google.com, type: AAAA, transaction ID: 3
+2024-12-27 16:40:01 - TLD server handling domain 'google.com' with qtype 28
+2024-12-27 16:40:01 - Domain parts: ['google', 'com']
+2024-12-27 16:40:01 - Extracted SLD: google, TLD: com
+2024-12-27 16:40:01 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:40:01 - Auth server received query from ('192.168.1.4', 51846): google.com, type: AAAA, transaction ID: 3
+2024-12-27 16:40:01 - Authoritative server handling domain 'google.com' with qtype 28
+2024-12-27 16:40:01 - Found google.com in AUTH_DATABASE
+2024-12-27 16:40:01 - Found matching records: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:40:01 - Auth server sent response to ('192.168.1.4', 51846) for transaction ID 3
+2024-12-27 16:40:01 - Received records from Auth server: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:40:01 - TLD server sent response to ('192.168.1.4', 51845) for transaction ID 3
+2024-12-27 16:40:01 - Received records from TLD server: [{'type': 'AAAA', 'ttl': 300, 'value': '2607:f8b0:4005:805::200e'}]
+2024-12-27 16:40:01 - Root server sent response to ('192.168.1.4', 51844) for transaction ID 3
+2024-12-27 16:40:19 - Root server received query from ('192.168.1.4', 51847): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:40:19 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:40:19 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:40:19 - Root server sent response to ('192.168.1.4', 51847) for transaction ID 1
+2024-12-27 16:40:19 - Root server received query from ('192.168.1.4', 51848): google.com, type: MX, transaction ID: 2
+2024-12-27 16:40:19 - Returning cached result for google.com, type=MX
+2024-12-27 16:40:19 - Root server sent response to ('192.168.1.4', 51848) for transaction ID 2
+2024-12-27 16:41:32 - Root server received query from ('192.168.1.4', 57781): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:41:32 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:41:32 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:41:32 - Root server sent response to ('192.168.1.4', 57781) for transaction ID 1
+2024-12-27 16:41:32 - Root server received query from ('192.168.1.4', 57782): google.com, type: PTR, transaction ID: 2
+2024-12-27 16:41:32 - Root server handling domain 'google.com' with qtype 12
+2024-12-27 16:41:32 - Domain parts: ['google', 'com']
+2024-12-27 16:41:32 - Extracted TLD: com
+2024-12-27 16:41:32 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:41:32 - TLD server received query from ('192.168.1.4', 57783): google.com, type: PTR, transaction ID: 2
+2024-12-27 16:41:32 - TLD server handling domain 'google.com' with qtype 12
+2024-12-27 16:41:32 - Domain parts: ['google', 'com']
+2024-12-27 16:41:32 - Extracted SLD: google, TLD: com
+2024-12-27 16:41:32 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:41:32 - Auth server received query from ('192.168.1.4', 57784): google.com, type: PTR, transaction ID: 2
+2024-12-27 16:41:32 - Authoritative server handling domain 'google.com' with qtype 12
+2024-12-27 16:41:32 - Found google.com in AUTH_DATABASE
+2024-12-27 16:41:32 - No records of type PTR for domain google.com
+2024-12-27 16:41:32 - Auth server sent response to ('192.168.1.4', 57784) for transaction ID 2
+2024-12-27 16:41:32 - No direct record from Auth server for domain google.com, using NS record as fallback
+2024-12-27 16:41:32 - TLD server sent response to ('192.168.1.4', 57783) for transaction ID 2
+2024-12-27 16:41:32 - Received records from TLD server: [{'type': 'NS', 'ttl': 300, 'value': 'ns.google.auth.'}]
+2024-12-27 16:41:32 - Root server sent response to ('192.168.1.4', 57782) for transaction ID 2
+2024-12-27 16:41:34 - Root server received query from ('192.168.1.4', 57785): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:41:34 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:41:34 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:41:34 - Root server sent response to ('192.168.1.4', 57785) for transaction ID 1
+2024-12-27 16:41:34 - Root server received query from ('192.168.1.4', 57786): google.com.home, type: AAAA, transaction ID: 2
+2024-12-27 16:41:34 - Root server handling domain 'google.com.home' with qtype 28
+2024-12-27 16:41:34 - Domain parts: ['google', 'com', 'home']
+2024-12-27 16:41:34 - Extracted TLD: home
+2024-12-27 16:41:34 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:41:34 - Root server sent response to ('192.168.1.4', 57786) for transaction ID 2
+2024-12-27 16:41:34 - Root server received query from ('192.168.1.4', 57787): google.com, type: AAAA, transaction ID: 3
+2024-12-27 16:41:34 - Returning cached result for google.com, type=AAAA
+2024-12-27 16:41:34 - Root server sent response to ('192.168.1.4', 57787) for transaction ID 3
+2024-12-27 16:41:37 - Root server received query from ('192.168.1.4', 57788): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:41:37 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:41:37 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:41:37 - Root server sent response to ('192.168.1.4', 57788) for transaction ID 1
+2024-12-27 16:41:37 - Root server received query from ('192.168.1.4', 57789): google.com, type: A, transaction ID: 2
+2024-12-27 16:41:37 - Root server handling domain 'google.com' with qtype 1
+2024-12-27 16:41:37 - Domain parts: ['google', 'com']
+2024-12-27 16:41:37 - Extracted TLD: com
+2024-12-27 16:41:37 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:41:37 - TLD server received query from ('192.168.1.4', 57790): google.com, type: A, transaction ID: 2
+2024-12-27 16:41:37 - TLD server handling domain 'google.com' with qtype 1
+2024-12-27 16:41:37 - Domain parts: ['google', 'com']
+2024-12-27 16:41:37 - Extracted SLD: google, TLD: com
+2024-12-27 16:41:37 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:41:37 - Auth server received query from ('192.168.1.4', 57791): google.com, type: A, transaction ID: 2
+2024-12-27 16:41:37 - Authoritative server handling domain 'google.com' with qtype 1
+2024-12-27 16:41:37 - Found google.com in AUTH_DATABASE
+2024-12-27 16:41:37 - Found matching records: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:41:37 - Auth server sent response to ('192.168.1.4', 57791) for transaction ID 2
+2024-12-27 16:41:37 - Received records from Auth server: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:41:37 - TLD server sent response to ('192.168.1.4', 57790) for transaction ID 2
+2024-12-27 16:41:37 - Received records from TLD server: [{'type': 'A', 'ttl': 300, 'value': '142.250.190.46'}]
+2024-12-27 16:41:37 - Root server sent response to ('192.168.1.4', 57789) for transaction ID 2
+2024-12-27 16:41:43 - Root server received query from ('192.168.1.4', 57792): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:41:43 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:41:43 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:41:43 - Root server sent response to ('192.168.1.4', 57792) for transaction ID 1
+2024-12-27 16:41:43 - Root server received query from ('192.168.1.4', 57793): google.com, type: MX, transaction ID: 2
+2024-12-27 16:41:43 - Root server handling domain 'google.com' with qtype 15
+2024-12-27 16:41:43 - Domain parts: ['google', 'com']
+2024-12-27 16:41:43 - Extracted TLD: com
+2024-12-27 16:41:43 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:41:43 - TLD server received query from ('192.168.1.4', 57794): google.com, type: MX, transaction ID: 2
+2024-12-27 16:41:43 - TLD server handling domain 'google.com' with qtype 15
+2024-12-27 16:41:43 - Domain parts: ['google', 'com']
+2024-12-27 16:41:43 - Extracted SLD: google, TLD: com
+2024-12-27 16:41:43 - Found SLD google in TLD_DATABASE under TLD com
+2024-12-27 16:41:43 - Auth server received query from ('192.168.1.4', 57795): google.com, type: MX, transaction ID: 2
+2024-12-27 16:41:43 - Authoritative server handling domain 'google.com' with qtype 15
+2024-12-27 16:41:43 - Found google.com in AUTH_DATABASE
+2024-12-27 16:41:43 - Found matching records: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com', 'preference': 10}]
+2024-12-27 16:41:43 - Auth server sent response to ('192.168.1.4', 57795) for transaction ID 2
+2024-12-27 16:41:43 - Received records from Auth server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com.', 'preference': 10}]
+2024-12-27 16:41:43 - TLD server sent response to ('192.168.1.4', 57794) for transaction ID 2
+2024-12-27 16:41:43 - Received records from TLD server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.google.com.', 'preference': 10}]
+2024-12-27 16:41:43 - Root server sent response to ('192.168.1.4', 57793) for transaction ID 2
+2024-12-27 16:45:01 - Root server received query from ('192.168.1.4', 63217): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:45:01 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:45:01 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:45:01 - Root server sent response to ('192.168.1.4', 63217) for transaction ID 1
+2024-12-27 16:45:01 - Root server received query from ('192.168.1.4', 63218): facebook.com.home, type: MX, transaction ID: 2
+2024-12-27 16:45:01 - Root server handling domain 'facebook.com.home' with qtype 15
+2024-12-27 16:45:01 - Domain parts: ['facebook', 'com', 'home']
+2024-12-27 16:45:01 - Extracted TLD: home
+2024-12-27 16:45:01 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:45:01 - Root server sent response to ('192.168.1.4', 63218) for transaction ID 2
+2024-12-27 16:45:01 - Root server received query from ('192.168.1.4', 63219): facebook.com, type: MX, transaction ID: 3
+2024-12-27 16:45:01 - Root server handling domain 'facebook.com' with qtype 15
+2024-12-27 16:45:01 - Domain parts: ['facebook', 'com']
+2024-12-27 16:45:01 - Extracted TLD: com
+2024-12-27 16:45:01 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:45:01 - TLD server received query from ('192.168.1.4', 63220): facebook.com, type: MX, transaction ID: 3
+2024-12-27 16:45:01 - TLD server handling domain 'facebook.com' with qtype 15
+2024-12-27 16:45:01 - Domain parts: ['facebook', 'com']
+2024-12-27 16:45:01 - Extracted SLD: facebook, TLD: com
+2024-12-27 16:45:01 - Found SLD facebook in TLD_DATABASE under TLD com
+2024-12-27 16:45:01 - Auth server received query from ('192.168.1.4', 63221): facebook.com, type: MX, transaction ID: 3
+2024-12-27 16:45:01 - Authoritative server handling domain 'facebook.com' with qtype 15
+2024-12-27 16:45:01 - Found facebook.com in AUTH_DATABASE
+2024-12-27 16:45:01 - Found matching records: [{'type': 'MX', 'ttl': 300, 'value': 'mail.facebook.com', 'preference': 20}]
+2024-12-27 16:45:01 - Auth server sent response to ('192.168.1.4', 63221) for transaction ID 3
+2024-12-27 16:45:01 - Received records from Auth server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.facebook.com.', 'preference': 20}]
+2024-12-27 16:45:01 - TLD server sent response to ('192.168.1.4', 63220) for transaction ID 3
+2024-12-27 16:45:01 - Received records from TLD server: [{'type': 'MX', 'ttl': 300, 'value': 'mail.facebook.com.', 'preference': 20}]
+2024-12-27 16:45:01 - Root server sent response to ('192.168.1.4', 63219) for transaction ID 3
+2024-12-27 16:48:42 - Root server received query from ('192.168.1.4', 54333): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 16:48:42 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 16:48:42 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 16:48:42 - Root server sent response to ('192.168.1.4', 54333) for transaction ID 1
+2024-12-27 16:48:42 - Root server received query from ('192.168.1.4', 54334): wikipedia.org.home, type: AAAA, transaction ID: 2
+2024-12-27 16:48:42 - Root server handling domain 'wikipedia.org.home' with qtype 28
+2024-12-27 16:48:42 - Domain parts: ['wikipedia', 'org', 'home']
+2024-12-27 16:48:42 - Extracted TLD: home
+2024-12-27 16:48:42 - TLD home not found in ROOT_DATABASE
+2024-12-27 16:48:42 - Root server sent response to ('192.168.1.4', 54334) for transaction ID 2
+2024-12-27 16:48:42 - Root server received query from ('192.168.1.4', 54335): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 16:48:42 - Root server handling domain 'wikipedia.org' with qtype 28
+2024-12-27 16:48:42 - Domain parts: ['wikipedia', 'org']
+2024-12-27 16:48:42 - Extracted TLD: org
+2024-12-27 16:48:42 - TLD org found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 16:48:42 - TLD server received query from ('192.168.1.4', 54336): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 16:48:42 - TLD server handling domain 'wikipedia.org' with qtype 28
+2024-12-27 16:48:42 - Domain parts: ['wikipedia', 'org']
+2024-12-27 16:48:42 - Extracted SLD: wikipedia, TLD: org
+2024-12-27 16:48:42 - Found SLD wikipedia in TLD_DATABASE under TLD org
+2024-12-27 16:48:42 - Auth server received query from ('192.168.1.4', 54337): wikipedia.org, type: AAAA, transaction ID: 3
+2024-12-27 16:48:42 - Authoritative server handling domain 'wikipedia.org' with qtype 28
+2024-12-27 16:48:42 - Found wikipedia.org in AUTH_DATABASE
+2024-12-27 16:48:42 - Found matching records: [{'type': 'AAAA', 'ttl': 300, 'value': '2620:0:862:ed1a::1'}]
+2024-12-27 16:48:42 - Auth server sent response to ('192.168.1.4', 54337) for transaction ID 3
+2024-12-27 16:48:42 - Received records from Auth server: [{'type': 'AAAA', 'ttl': 300, 'value': '2620:0:862:ed1a::1'}]
+2024-12-27 16:48:42 - TLD server sent response to ('192.168.1.4', 54336) for transaction ID 3
+2024-12-27 16:48:42 - Received records from TLD server: [{'type': 'AAAA', 'ttl': 300, 'value': '2620:0:862:ed1a::1'}]
+2024-12-27 16:48:42 - Root server sent response to ('192.168.1.4', 54335) for transaction ID 3
+2024-12-27 17:50:26 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-27 17:50:30 - TLD DNS server started on 192.168.1.4:5301
+2024-12-27 17:50:34 - Root DNS server started on 192.168.1.4:53
+2024-12-27 17:51:11 - Root server received query from ('192.168.1.4', 59873): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-27 17:51:11 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-27 17:51:11 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-27 17:51:11 - Root server sent response to ('192.168.1.4', 59873) for transaction ID 1
+2024-12-27 17:51:11 - Root server received query from ('192.168.1.4', 59874): facebook.com.home, type: CNAME, transaction ID: 2
+2024-12-27 17:51:11 - Root server handling domain 'facebook.com.home' with qtype 5
+2024-12-27 17:51:11 - Domain parts: ['facebook', 'com', 'home']
+2024-12-27 17:51:11 - Extracted TLD: home
+2024-12-27 17:51:11 - TLD home not found in ROOT_DATABASE
+2024-12-27 17:51:11 - Root server sent response to ('192.168.1.4', 59874) for transaction ID 2
+2024-12-27 17:51:11 - Root server received query from ('192.168.1.4', 59875): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 17:51:11 - Root server handling domain 'facebook.com' with qtype 5
+2024-12-27 17:51:11 - Domain parts: ['facebook', 'com']
+2024-12-27 17:51:11 - Extracted TLD: com
+2024-12-27 17:51:11 - TLD com found in ROOT_DATABASE, forwarding query to TLD server
+2024-12-27 17:51:11 - TLD server received query from ('192.168.1.4', 59876): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 17:51:11 - TLD server handling domain 'facebook.com' with qtype 5
+2024-12-27 17:51:11 - Domain parts: ['facebook', 'com']
+2024-12-27 17:51:11 - Extracted SLD: facebook, TLD: com
+2024-12-27 17:51:11 - Found SLD facebook in TLD_DATABASE under TLD com
+2024-12-27 17:51:11 - Auth server received query from ('192.168.1.4', 59877): facebook.com, type: CNAME, transaction ID: 3
+2024-12-27 17:51:11 - Authoritative server handling domain 'facebook.com' with qtype 5
+2024-12-27 17:51:11 - Found facebook.com in AUTH_DATABASE
+2024-12-27 17:51:11 - Found matching records: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com'}]
+2024-12-27 17:51:11 - Auth server sent response to ('192.168.1.4', 59877) for transaction ID 3
+2024-12-27 17:51:11 - Received records from Auth server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
+2024-12-27 17:51:11 - TLD server sent response to ('192.168.1.4', 59876) for transaction ID 3
+2024-12-27 17:51:11 - Received records from TLD server: [{'type': 'CNAME', 'ttl': 300, 'value': 'gstar.c10r.facebook.com.'}]
+2024-12-27 17:51:11 - Root server sent response to ('192.168.1.4', 59875) for transaction ID 3

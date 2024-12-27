@@ -3,12 +3,17 @@ import struct
 import datetime
 import random
 
+
+transaction_id=0
+
+# dns_utils.py
 RECORD_TYPES = {
     1: "A",
     28: "AAAA",
     15: "MX",
     2: "NS",
-    12: "PTR"
+    12: "PTR",
+    5: "CNAME"  # Added CNAME support
 }
 
 def log(message):
@@ -83,6 +88,10 @@ def build_response(transaction_id, domain, qtype, records):
             ptr_encoded = encode_domain_name(r["value"])
             response += struct.pack(">H", len(ptr_encoded))
             response += ptr_encoded
+        elif r["type"] == "CNAME":  # Added CNAME handling
+            cname_encoded = encode_domain_name(r["value"])
+            response += struct.pack(">H", len(cname_encoded))
+            response += cname_encoded
         else:
             # Unsupported type
             log(f"Unsupported record type: {r['type']}")
@@ -104,6 +113,7 @@ def build_query(domain, qtype, transaction_id=None):
     if transaction_id is None:
         # Generate a random transaction_id
         transaction_id = random.randint(0, 65535)
+        log("here is"+str(transaction_id))
     transaction_id_bytes = struct.pack(">H", transaction_id)
     flags = b"\x01\x00"
     qdcount = b"\x00\x01"
@@ -155,6 +165,9 @@ def parse_response(data):
         elif rtype_str == "PTR":
             ptr = decode_domain_name(rdata)
             records.append({"type": "PTR", "ttl": ttl, "value": ptr})
+        elif rtype_str == "CNAME":
+            cname= decode_domain_name(rdata)
+            records.append({"type": "CNAME", "ttl": ttl, "value": cname})
         else:
             # Unsupported type
             log(f"Received unsupported record type: {rtype}")

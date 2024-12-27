@@ -3,20 +3,23 @@ from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES,
 
 AUTH_DATABASE = {
     "google.com": [
-        {"type":"A","ttl":300,"value":"142.250.190.46"},
-        {"type":"AAAA","ttl":300,"value":"2607:f8b0:4005:805::200e"},
-        {"type":"MX","ttl":300,"value":"mail.google.com","preference":10},
-        {"type":"NS","ttl":300,"value":"ns.google.com"}
+        {"type":"A","ttl":300,"value":"172.217.18.46"},
+        {"type":"AAAA","ttl":300,"value":"2a00:1450:4006:801::200e"},
+        {"type":"MX","ttl":300,"value":"smtp.google.com","preference":10},
+        {"type":"NS","ttl":300,"value":"ns1.google.com"},
+        {"type": "CNAME", "ttl": 300, "value": "googlemail.l.google.com."}
     ],
     "facebook.com": [
-        {"type":"A","ttl":300,"value":"157.240.221.35"},
-        {"type":"MX","ttl":300,"value":"mail.facebook.com","preference":20},
-        {"type":"NS","ttl":300,"value":"ns.facebook.com"}
+        {"type":"A","ttl":300,"value":"102.132.103.35"},
+        {"type":"MX","ttl":300,"value":"smtpin.vvv.facebook.com","preference":20},
+        {"type":"NS","ttl":300,"value":"a.ns.facebook.com"},
+        {"type": "CNAME", "ttl": 300, "value": "gstar.c10r.facebook.com"}
     ],
     "wikipedia.org": [
-        {"type":"A","ttl":300,"value":"91.198.174.192"},
-        {"type":"AAAA","ttl":300,"value":"2620:0:862:ed1a::1"},
-        {"type":"NS","ttl":300,"value":"ns1.wikimedia.org"}
+        {"type":"A","ttl":300,"value":"185.15.58.224"},
+        {"type":"AAAA","ttl":300,"value":"2a02:ec80:600:ed1a::1"},
+        {"type":"NS","ttl":300,"value":"ns1.wikimedia.org"},
+        {"type": "CNAME", "ttl": 300, "value": "dyna.wikimedia.org"}
     ],
     "2.10.20.172.in-addr.arpa": [
         {"type": "PTR", "ttl": 300, "value": "auth-dns.local"}
@@ -41,7 +44,7 @@ def find_record(domain, qtype):
         log(f"Domain {domain} not found in AUTH_DATABASE")
     return None
 
-def start_auth_server(ip="172.20.10.2", port=5302):
+def start_auth_server(ip="192.168.1.4", port=5302):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ip, port))
     log(f"Authoritative DNS server started on {ip}:{port}")
