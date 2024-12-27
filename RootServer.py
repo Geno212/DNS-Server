@@ -47,7 +47,7 @@ def find_record(domain, qtype, transaction_id):
     parts = domain.split(".")
     log(f"Domain parts: {parts}")
     if len(parts) < 2:
-        log("Domain has less than 2 parts, returning None")
+        log("Domain has less than 2 parts probably a format error, returning None")
         return None
     tld = parts[-1]
     log(f"Extracted TLD: {tld}")

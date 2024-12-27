@@ -656,3 +656,51 @@
 2024-12-27 23:35:50 - No records received from TLD server for domain facebookl.com
 2024-12-27 23:35:50 - ROOT server generated NXDOMAIN response for Transaction ID: 3, Domain: facebookl.com, Type: CNAME
 2024-12-27 23:35:50 - Root server sent response to ('192.168.1.4', 65520) for transaction ID 3
+2024-12-28 00:07:27 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-28 00:07:28 - TLD DNS server started on 192.168.1.4:5301
+2024-12-28 00:07:30 - Root DNS server started on 192.168.1.4:53
+2024-12-28 00:08:22 - Root server received query from ('192.168.1.4', 63386): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-28 00:08:22 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-28 00:08:22 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-28 00:08:22 - Root server sent response to ('192.168.1.4', 63386) for transaction ID 1
+2024-12-28 00:08:22 - Root server received query from ('192.168.1.4', 63387): facebookl>com.home, type: CNAME, transaction ID: 2
+2024-12-28 00:08:22 - Root server handling domain 'facebookl>com.home' with qtype 5
+2024-12-28 00:08:22 - Domain parts: ['facebookl>com', 'home']
+2024-12-28 00:08:22 - Extracted TLD: home
+2024-12-28 00:08:22 - TLD home not found in ROOT_DATABASE
+2024-12-28 00:08:22 - ROOT server generated NXDOMAIN response for Transaction ID: 2, Domain: facebookl>com.home, Type: CNAME
+2024-12-28 00:08:22 - Root server sent response to ('192.168.1.4', 63387) for transaction ID 2
+2024-12-28 00:08:34 - Root server received query from ('192.168.1.4', 54470): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-28 00:08:34 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-28 00:08:34 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-28 00:08:34 - Root server sent response to ('192.168.1.4', 54470) for transaction ID 1
+2024-12-28 00:08:34 - Root server received query from ('192.168.1.4', 54471): facebook>com.home, type: CNAME, transaction ID: 2
+2024-12-28 00:08:34 - Root server handling domain 'facebook>com.home' with qtype 5
+2024-12-28 00:08:34 - Domain parts: ['facebook>com', 'home']
+2024-12-28 00:08:34 - Extracted TLD: home
+2024-12-28 00:08:34 - TLD home not found in ROOT_DATABASE
+2024-12-28 00:08:34 - ROOT server generated NXDOMAIN response for Transaction ID: 2, Domain: facebook>com.home, Type: CNAME
+2024-12-28 00:08:34 - Root server sent response to ('192.168.1.4', 54471) for transaction ID 2
+2024-12-28 00:09:35 - Root server received query from ('192.168.1.4', 51496): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-28 00:09:35 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-28 00:09:35 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-28 00:09:35 - Root server sent response to ('192.168.1.4', 51496) for transaction ID 1
+2024-12-28 00:09:35 - Root server received query from ('192.168.1.4', 51497): facebook>com, type: CNAME, transaction ID: 2
+2024-12-28 00:09:35 - Root server handling domain 'facebook>com' with qtype 5
+2024-12-28 00:09:35 - Domain parts: ['facebook>com']
+2024-12-28 00:09:35 - Domain has less than 2 parts, returning None
+2024-12-28 00:09:35 - ROOT server generated NXDOMAIN response for Transaction ID: 2, Domain: facebook>com, Type: CNAME
+2024-12-28 00:09:35 - Root server sent response to ('192.168.1.4', 51497) for transaction ID 2
+2024-12-28 00:32:37 - Authoritative DNS server started on 192.168.1.4:5302
+2024-12-28 00:32:39 - TLD DNS server started on 192.168.1.4:5301
+2024-12-28 00:32:43 - Root DNS server started on 192.168.1.4:53
+2024-12-28 00:32:55 - Root server received query from ('192.168.1.4', 56618): 4.1.168.192.in-addr.arpa, type: PTR, transaction ID: 1
+2024-12-28 00:32:55 - Root server handling domain '4.1.168.192.in-addr.arpa' with qtype 12
+2024-12-28 00:32:55 - Found 4.1.168.192.in-addr.arpa in ROOT_DATABASE
+2024-12-28 00:32:55 - Root server sent response to ('192.168.1.4', 56618) for transaction ID 1
+2024-12-28 00:32:55 - Root server received query from ('192.168.1.4', 56619): facebook>com, type: CNAME, transaction ID: 2
+2024-12-28 00:32:55 - Root server handling domain 'facebook>com' with qtype 5
+2024-12-28 00:32:55 - Domain parts: ['facebook>com']
+2024-12-28 00:32:55 - Domain has less than 2 parts probably a format error, returning None
+2024-12-28 00:32:55 - ROOT server generated NXDOMAIN response for Transaction ID: 2, Domain: facebook>com, Type: CNAME
+2024-12-28 00:32:55 - Root server sent response to ('192.168.1.4', 56619) for transaction ID 2
