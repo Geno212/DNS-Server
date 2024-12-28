@@ -1,5 +1,5 @@
 import socket, time
-from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log, forward_query, parse_nxdomain_response
+from dns_utils import parse_query, build_response, build_nxdomain, build_format_error, RECORD_TYPES, log, forward_query, parse_nxdomain_response
 
 ROOT_DATABASE = {
     "com": {"type":"NS","ttl":300,"value":"ns.com.tld."},
@@ -58,9 +58,10 @@ def find_record(domain, qtype, transaction_id):
         if records:
             log(f"Received records from TLD server: {records}")
             put_in_cache(domain, qtype, records)
+            return records
         else:
             log(f"No records received from TLD server for domain {domain}")
-        return records
+            return None
     else:
         log(f"TLD {tld} not found in ROOT_DATABASE")
     return None
@@ -72,7 +73,21 @@ def start_root_server(ip="192.168.1.4", port=53):
 
     while True:
         data, addr = sock.recvfrom(512)
-        transaction_id, domain, qtype = parse_query(data)
+        transaction_id, domain, qtype, rd_flag, question_section = parse_query(data)
+        if transaction_id is None:
+            transaction_id = 0
+        if rd_flag is None:
+            rd_flag = 0
+        if question_section is None:
+            question_section = b''
+
+        if domain is None or qtype is None:
+            log(f"Received malformed query from {addr}, sending format error response.")
+            error_response = build_format_error(transaction_id, rd_flag, question_section)
+            sock.sendto(error_response, addr)
+            continue
+
+
         qtype_str = RECORD_TYPES.get(qtype,'?')
         log(f"Root server received query from {addr}: {domain}, type: {qtype_str}, transaction ID: {transaction_id}")
 

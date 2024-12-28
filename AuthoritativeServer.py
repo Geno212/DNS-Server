@@ -1,5 +1,5 @@
 import socket
-from dns_utils import parse_query, build_response, build_nxdomain, RECORD_TYPES, log, parse_nxdomain_response
+from dns_utils import parse_query, build_response, build_nxdomain, build_format_error, RECORD_TYPES, log, parse_nxdomain_response
 
 AUTH_DATABASE = {
     "google.com": [
@@ -38,8 +38,10 @@ def find_record(domain, qtype):
                 return filtered
             else:
                 log(f"No records of type {qtype_str} for domain {domain}")
-        # If no direct match, maybe return something else or NXDOMAIN
-        return None
+            return None
+        else:
+            log(f"Unsupported QTYPE: {qtype}")
+            return None
     else:
         log(f"Domain {domain} not found in AUTH_DATABASE")
     return None
@@ -51,7 +53,21 @@ def start_auth_server(ip="192.168.1.4", port=5302):
 
     while True:
         data, addr = sock.recvfrom(512)
-        transaction_id, domain, qtype = parse_query(data)
+        transaction_id, domain, qtype, rd_flag, question_section = parse_query(data)
+        if transaction_id is None:
+            transaction_id = 0
+        if rd_flag is None:
+            rd_flag = 0
+        if question_section is None:
+            question_section = b''
+
+        if domain is None or qtype is None:
+            log(f"Received malformed query from {addr}, sending format error response.")
+            error_response = build_format_error(transaction_id, rd_flag, question_section)
+            sock.sendto(error_response, addr)
+            continue
+
+
         qtype_str = RECORD_TYPES.get(qtype,'?')
         log(f"Auth server received query from {addr}: {domain}, type: {qtype_str}, transaction ID: {transaction_id}")
 
